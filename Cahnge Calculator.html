@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .back-btn {
+            background-color: #f44336;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-family: monospace;
+            line-height: 1.6;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Calculate Change</h1>
+        
+        <input type="number" id="amount" placeholder="Enter Amount" min="1">
+        
+        <button onclick="calculateChange()">Submit</button>
+        <button class="back-btn" onclick="resetForm()">Back</button>
+        
+        <div class="result" id="changeResult"></div>
+    </div>
+
+    <script>
+        function calculateChange() {
+            const amountInput = document.getElementById("amount").value;
+            const resultDiv = document.getElementById("changeResult");
+            
+            // Clear previous results
+            resultDiv.innerHTML = "";
+            resultDiv.className = "result";
+            
+            // Validate input
+            if (amountInput === "") {
+                resultDiv.innerHTML = "Please enter an amount";
+                resultDiv.className += " error";
+                return;
+            }
+            
+            let amount = parseInt(amountInput);
+            
+            if (isNaN(amount) || amount < 1) {
+                resultDiv.innerHTML = "Please enter a positive number";
+                resultDiv.className += " error";
+                return;
+            }
+            
+            // Bill denominations
+            const denominations = [500, 100, 50, 20, 1];
+            let results = [];
+            
+            // Calculate bills for each denomination
+            for (const bill of denominations) {
+                const count = Math.floor(amount / bill);
+                if (count > 0) {
+                    results.push(`${count} of B${bill}`);
+                    amount = amount % bill;
+                }
+            }
+            
+            // Display results
+            if (results.length > 0) {
+                resultDiv.innerHTML = results.join("<br>");
+            } else {
+                resultDiv.innerHTML = "No bills needed";
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("amount").value = "";
+            document.getElementById("changeResult").innerHTML = "";
+            document.getElementById("changeResult").className = "result";
+        }
+    </script>
+</body>
+</html>

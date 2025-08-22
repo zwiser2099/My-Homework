@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .converter {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        input, select, button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-btn {
+            background-color: #f44336;
+            margin-top: 10px;
+        }
+        .back-btn:hover {
+            background-color: #d32f2f;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>Temperature Converter</h1>
+        
+        <input type="number" id="tempValue" placeholder="Enter temperature value">
+        
+        <select id="tempUnit">
+            <option value="celsius">Celsius to Fahrenheit</option>
+            <option value="fahrenheit">Fahrenheit to Celsius</option>
+        </select>
+        
+        <button onclick="convertTemperature()">Convert</button>
+        <button class="back-btn" onclick="resetForm()">Back</button>
+        
+        <div class="result" id="tempResult">Result will appear here</div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const inputValue = document.getElementById("tempValue").value;
+            const resultDiv = document.getElementById("tempResult");
+            
+            // Clear previous errors
+            resultDiv.className = "result";
+            
+            // Validate input
+            if (inputValue === "") {
+                resultDiv.innerHTML = "Please enter a temperature value";
+                resultDiv.className += " error";
+                return;
+            }
+            
+            if (isNaN(inputValue)) {
+                resultDiv.innerHTML = "Please enter a valid number";
+                resultDiv.className += " error";
+                return;
+            }
+            
+            const value = parseFloat(inputValue);
+            const unit = document.getElementById("tempUnit").value;
+            let result;
+            
+            if (unit === "celsius") {
+                result = (value * 9/5) + 32;
+                resultDiv.innerHTML = `${value}°C = ${result.toFixed(2)}°F`;
+            } else {
+                result = (value - 32) * 5/9;
+                resultDiv.innerHTML = `${value}°F = ${result.toFixed(2)}°C`;
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("tempValue").value = "";
+            document.getElementById("tempResult").innerHTML = "Result will appear here";
+            document.getElementById("tempResult").className = "result";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 8px;
+            width: 100%;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .back-btn {
+            background-color: #f44336;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate Grade</h1>
+    
+    <input type="number" id="score" placeholder="Enter Amount" min="0" max="100">
+    
+    <button onclick="calculateGrade()">Submit</button>
+    <button class="back-btn" onclick="resetForm()">Back</button>
+    
+    <div id="result"></div>
+
+    <script>
+        function calculateGrade() {
+            const score = document.getElementById("score").value;
+            const resultDiv = document.getElementById("result");
+            
+            // Clear previous errors
+            resultDiv.className = "";
+            
+            if (score === "") {
+                resultDiv.innerHTML = "Please enter a score";
+                resultDiv.className = "error";
+                return;
+            }
+            
+            const numericScore = parseInt(score);
+            
+            if (isNaN(numericScore) || numericScore < 0 || numericScore > 100) {
+                resultDiv.innerHTML = "Please enter a score between 0-100";
+                resultDiv.className = "error";
+                return;
+            }
+            
+            let grade;
+            
+            if (numericScore >= 85) {
+                grade = "A";
+            } else if (numericScore >= 70) {
+                grade = "B";
+            } else if (numericScore >= 55) {
+                grade = "C";
+            } else if (numericScore >= 40) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+            
+            resultDiv.innerHTML = `You got an ${grade}`;
+        }
+
+        function resetForm() {
+            document.getElementById("score").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
