@@ -4,19 +4,176 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zayar Win Resume</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 2.2em;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    
+    p {
+      margin-bottom: 15px;
+    }
+    
+    .section {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      color: #2c3e50;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+    
+    li:before {
+      content: "•";
+      color: #3498db;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    .project-card {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .project-card h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    
+    .project-link {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 0.9em;
+      transition: background-color 0.3s ease;
+    }
+    
+    .project-link:hover {
+      background-color: #2980b9;
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <h1>ZAYAR WIN</h1>
-  <p><strong>Address:</strong> 60 ถ. ร่มเกล้า, Min Buri, Bangkok 10510<br>
-     <strong>Phone:</strong> +66-9426-3250<br>
-     <strong>Email:</strong> <a href="mailto:zayarw606@gmail.com">zayarw606@gmail.com</a>
-  </p>
+  <div class="section">
+    <p><strong>Address:</strong> 60 ถ. ร่มเกล้า, Min Buri, Bangkok 10510<br>
+       <strong>Phone:</strong> +66-9426-3250<br>
+       <strong>Email:</strong> <a href="mailto:zayarw606@gmail.com">zayarw606@gmail.com</a>
+    </p>
+  </div>
 
   <div class="section">
     <h2>Profile</h2>
     <p>Energetic and adaptable student majoring in Digital Technology Innovation. Passionate about emerging technologies, quick to learn new skills, and collaborative in diverse environments.</p>
+  </div>
+
+  <div class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Temperature Converter</h3>
+        <p>A tool that converts temperatures between Celsius, Fahrenheit, and Kelvin scales.</p>
+        <a href="Temperature Converter.html" class="project-link">View Project</a>
+      </div>
+      
+      <div class="project-card">
+        <h3>Grade Calculator</h3>
+        <p>Calculator that helps students determine their grades and GPA based on scores and weights.</p>
+        <a href="Grade Calculator.html" class="project-link">View Project</a>
+      </div>
+      
+      <div class="project-card">
+        <h3>Uni Distance Calculator</h3>
+        <p>Tool for calculating distances between university locations or campuses.</p>
+        <a href="Uni Distance Calculator.html" class="project-link">View Project</a>
+      </div>
+      
+      <div class="project-card">
+        <h3>Cahuge Calculator</h3>
+        <p>A comprehensive calculator with advanced mathematical functions and capabilities.</p>
+        <a href="Cahuge Calculator.html" class="project-link">View Project</a>
+      </div>
+      
+      <div class="project-card">
+        <h3>Hobby Page</h3>
+        <p>A personal page showcasing interests, hobbies, and extracurricular activities.</p>
+        <a href="Hobby.html" class="project-link">View Project</a>
+      </div>
+    </div>
   </div>
 
   <div class="section">
@@ -33,6 +190,8 @@
     <ul class="skills">
       <li>Proficient in Microsoft Office (Word, PowerPoint, Excel)</li>
       <li>Basic programming knowledge in C++, Java, Python</li>
+      <li>Web development (HTML, CSS, JavaScript)</li>
+      <li>Project development and implementation</li>
     </ul>
   </div>
 
@@ -49,6 +208,7 @@
     <ul class="hobbies">
       <li>Running, Swimming, Football, Volleyball</li>
       <li>Exploring technology and hands-on learning</li>
+      <li>Developing practical web tools and applications</li>
     </ul>
   </div>
 
